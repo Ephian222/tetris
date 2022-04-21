@@ -1,12 +1,12 @@
 #include "canvas.h"
 #include "block.h"
-#include <conio.h>
-#include <cstdlib>
-#include <ctime>
-#include <windows.h>
+#include <conio.h>	// 키보드 입력을 위한 헤더파일
+#include <cstdlib>	// 블럭 랜덤 생성을 위한 랜덤함수 헤더파일
+#include <ctime>	// 난수 초기화를 위한 srand 헤더파일
+#include <windows.h>	// 시스템상 딜레이를 주기 위해 추가
 
-void PlayGame(Canvas& can);
-Block* MakeBlock();
+void PlayGame(Canvas& can);	// 게임 진행을 위한 반복 함수
+Block* MakeBlock();		// 블럭 랜덤 생성 함수
 
 int main() {
     srand(time(NULL));
@@ -23,14 +23,14 @@ void PlayGame(Canvas& can) {
     can.show();
     while(true) {
         int c = 0;
-        if(can.isBlockEmpty()) {
+        if(can.isBlockEmpty()) {		// 블럭이 맨 밑으로 내려가 Canvas::B가 할당이 해제되었을 때, 새로 할당해주기 위한 if문
             b = MakeBlock();
             can.initBlock(b);
-            if(can.isTopfull()) break;
+            if(can.isTopfull()) break;		// 새로 할당될 블럭의 위치가 이미 차있다면 GameOver를 위해 반복문을 부순다.
             system("cls");
             can.show();
         }
-        if(time % 50 == 0) {
+        if(time % 50 == 0) {			// 일정 시간마다 블럭이 아래로 내려가는 것을 위한 if문
             can.move(3);
             if(!can.isBlockEmpty()) {
                system("cls");
@@ -67,7 +67,7 @@ void PlayGame(Canvas& can) {
     }
 }
 
-Block* MakeBlock() {
+Block* MakeBlock() {		// 블럭을 랜덤으로 하나 할당한 뒤 그 블럭의 주소값을 반환
     int ran = rand() % 7;
     Block* b;
     switch(ran) {
