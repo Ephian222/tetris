@@ -8,7 +8,7 @@ using namespace std;
 
 class Block {
 protected:
-    vector<int> b1, b2, b3, b4; 
+    vector<int> b1, b2, b3, b4;         // 블럭이 갖고 있는 4칸 모두 각자 좌표를 가지고 있다
 public:
     Block(vector<int> a, vector<int> b, vector<int> c, vector<int> d) {
         b1 = a;
@@ -17,7 +17,7 @@ public:
         b4 = d;
     }
     
-    Block(char b) {
+    Block(char b) {     // 블럭 모양에 따른 좌표 할당
         switch(b) {
         case 'I' :
             b1 = {11, 0};
@@ -64,7 +64,7 @@ public:
         }
     }
 
-    vector<int> getpos(int n) {
+    vector<int> getpos(int n) {     // 매개변수에 맞는 칸의 좌표를 반환한다.
         if(n == 1) return b1;
         else if(n == 2) return b2;
         else if(n == 3) return b3;
