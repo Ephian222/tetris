@@ -53,13 +53,13 @@ public:
             if(gets(B->getpos(1).at(0)-1, B->getpos(1).at(1)) != " " || gets(B->getpos(2).at(0)-1, B->getpos(2).at(1)) != " " 
             || gets(B->getpos(3).at(0)-1, B->getpos(3).at(1)) != " " || gets(B->getpos(4).at(0)-1, B->getpos(4).at(1)) != " ") return;
             B->move(1);
-            //checkarea();
+
         }
         else if(w == 2) {
             if(gets(B->getpos(1).at(0)+1, B->getpos(1).at(1)) != " " || gets(B->getpos(2).at(0)+1, B->getpos(2).at(1)) != " " 
             || gets(B->getpos(3).at(0)+1, B->getpos(3).at(1)) != " " || gets(B->getpos(4).at(0)+1, B->getpos(4).at(1)) != " ") return;
             B->move(2);
-            //checkarea();
+
         }
         else if(w == 3) {
             if(B->getpos(1).at(1)+1 == 20 || B->getpos(2).at(1)+1 == 20 || B->getpos(3).at(1)+1 == 20 || B->getpos(4).at(1)+1 == 20) {      // 바닥까지 내려온 경우
@@ -74,7 +74,7 @@ public:
                 return;
             }
             B->move(3);
-            //checkarea();
+
         }
         else if(w == 4) {       // 하드드롭. 맨 밑 혹은 블럭이 있는 곳 까지의 거리를 계산한 다음 그 수치만큼 블럭의 좌표를 바꿔준다
             int sub = 0;
